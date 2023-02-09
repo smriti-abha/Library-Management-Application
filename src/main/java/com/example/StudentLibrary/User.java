@@ -17,7 +17,7 @@ public class User {
 
     }
     public User(int id, String name, String email, int age){
-        this.id=id;
+
         this.name=name;
         this.email=email;
         this.age=age;
