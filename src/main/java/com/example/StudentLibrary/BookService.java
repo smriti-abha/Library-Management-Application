@@ -1,7 +1,12 @@
 package com.example.StudentLibrary;
 
+
+import com.example.StudentLibrary.Models.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BookService {
@@ -27,5 +32,18 @@ public class BookService {
        Book booktoBeupdated= bookRepository.findById(id).get();
        booktoBeupdated.setPages(updateBookPage.getPages());
         bookRepository.save(booktoBeupdated);
+    }
+    public List<ResponseObj> getBookNameAndAuthor(){
+        List<Book> bookList=bookRepository.findAll();
+        List<ResponseObj> ansList= new ArrayList<ResponseObj>();
+
+        for(Book book:bookList){
+
+            ResponseObj responseObj= new ResponseObj();
+            responseObj.author=book.getAuthor();
+            responseObj.name=book.getName();
+            ansList.add(responseObj);
+        }
+        return ansList;
     }
 }

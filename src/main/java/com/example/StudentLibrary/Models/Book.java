@@ -1,10 +1,7 @@
-package com.example.StudentLibrary;
+package com.example.StudentLibrary.Models;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="book_table")
@@ -16,6 +13,11 @@ public class Book {
     private String name;
     private int pages;
     private String author;
+
+    @ManyToOne
+    @JoinColumn
+
+    public Student student;//connect the student entity
 
     public Book(){
 
@@ -59,5 +61,8 @@ public class Book {
     public String getAuthor() {
         return author;
     }
+
+
+
 
 }

@@ -1,7 +1,11 @@
 package com.example.StudentLibrary;
 
+
+import com.example.StudentLibrary.Models.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping
@@ -31,5 +35,12 @@ public class BookController {
     @PutMapping("/update_pages")
     public void updatePages(@RequestBody() UpdateBookPage updateBookPage){
      bookService.updateBookPage(updateBookPage);
+    }
+
+    @GetMapping("/get_book_names_and_authors")
+    public List<ResponseObj> getBookNamesAndAuthor() {
+        List<ResponseObj> responseObjs= bookService.getBookNameAndAuthor();
+
+        return responseObjs;
     }
 }
